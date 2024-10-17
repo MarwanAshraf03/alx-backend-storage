@@ -1,13 +1,5 @@
 -- trigger
-DELIMITER //
-
-CREATE TRIGGER before_insert_order
-BEFORE INSERT ON `order`
-FOR EACH ROW 
-BEGIN
-    UPDATE items 
-    SET items.quantity = items.quantity - NEW.number 
-    WHERE items.name = NEW.item_name;
-END//
-
-DELIMITER ;
+create trigger sub before insert on orders
+for each row begin 
+update items set items.quantity -= NEW.number where items.name = new.item_name;
+end;
