@@ -1,5 +1,5 @@
 // lists all databases
-db.school.insertOne(
+db.school.insert(
   {
     name: "Holberton school",
   }
