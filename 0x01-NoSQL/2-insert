@@ -1,0 +1,7 @@
+// lists all databases
+db.school.insertOne(
+  {
+    name: "Holberton school",
+  }
+)
+exit
