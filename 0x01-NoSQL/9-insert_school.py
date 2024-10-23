@@ -5,4 +5,4 @@
 def insert_school(mongo_collection, **kwargs):
     """returns all documents in a collection"""
     inst = mongo_collection.insert_one(kwargs)
-    return inst._inserted_id
+    return inst.inserted_id
