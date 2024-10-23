@@ -4,8 +4,9 @@ from pymongo import MongoClient
 
 def lenn(cur):
     count = 0
-    for _ in cur:
-        count += 1
+    for i in cur:
+        # count += 1
+        print(i)
     return count
 
 if __name__ == "__main__":
@@ -14,7 +15,7 @@ if __name__ == "__main__":
     nginx_collection = db.nginx
     print(f"{nginx_collection.count_documents({})} logs")
     print("Methods:")
-    print(nginx_collection.find({"path": "GET"}))
+    lenn(nginx_collection.find({"path": "GET"}))
     # print(f'\tmethod GET: {lenn(nginx_collection.find({"path": "GET"}))}')
     print(f"\tmethod POST: {0}")
     print(f"\tmethod PUT: {0}")
