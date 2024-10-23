@@ -16,7 +16,7 @@ if __name__ == "__main__":
     nginx_collection = db.nginx
     print(f"{nginx_collection.count_documents({})} logs")
     print("Methods:")
-    print(nginx_collection.find({"method": "GET"}).count())
+    print(len(list(nginx_collection.find({"method": "GET"}))))
     # print(f'\tmethod GET: {lenn(nginx_collection.find({"path": "GET"}))}')
     print(f"\tmethod POST: {0}")
     print(f"\tmethod PUT: {0}")
