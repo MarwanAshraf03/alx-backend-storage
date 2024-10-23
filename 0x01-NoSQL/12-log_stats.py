@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ 11-main """
 from pymongo import MongoClient
+from pymongo import cursor
 
 def lenn(cur):
     count = 0
@@ -15,7 +16,7 @@ if __name__ == "__main__":
     nginx_collection = db.nginx
     print(f"{nginx_collection.count_documents({})} logs")
     print("Methods:")
-    lenn(nginx_collection.find({"method": "GET"}))
+    print(nginx_collection.find({"method": "GET"}).count())
     # print(f'\tmethod GET: {lenn(nginx_collection.find({"path": "GET"}))}')
     print(f"\tmethod POST: {0}")
     print(f"\tmethod PUT: {0}")
