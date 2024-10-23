@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-""" 12 """
+"""Module"""
 from pymongo import MongoClient
 
 
 if __name__ == "__main__":
     client = MongoClient('mongodb://127.0.0.1:27017')
-    db = client.logs
-    nc = db.nginx
+    nc = client.logs.nginx
     print(f"{nc.count_documents({})} logs")
     print("Methods:")
     print(f'\tmethod GET: {len(list(nc.find({"method": "GET"})))}')
