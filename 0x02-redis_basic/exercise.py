@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import redis
+import uuid
 
 
 class Cache:
@@ -7,5 +8,6 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
     def store(self, data):
-        self._redis.set("he", data)
-        return "he"
+        key = uuid.uuid4()
+        self._redis.set(key, data)
+        return key
