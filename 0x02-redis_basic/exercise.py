@@ -8,7 +8,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
     def store(self, data):
-        key = uuid.uuid4()
+        key = str(uuid.uuid4())
         print(type(key))
         print(key)
         return "he"
