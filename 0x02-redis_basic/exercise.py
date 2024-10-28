@@ -8,9 +8,9 @@ from functools import wraps
 
 def call_count(fn):
     @wraps(fn)
-    def wrapper(self):
+    def wrapper(self, data):
         self._redis.incr(fn.__qualname__)
-        return fn(data)
+        return fn(self, data)
     return wrapper
 
 
