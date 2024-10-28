@@ -6,7 +6,7 @@ import typing
 from functools import wraps
 
 
-def count_calls(method: callable) -> callable:
+def count_calls(method: typing.Callable) -> typing.Callable:
     @wraps(method)
     def wrapper(self, data):
         self._redis.incr(method.__qualname__)
