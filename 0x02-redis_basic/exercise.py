@@ -17,7 +17,6 @@ class Cache:
     def __init__(self) -> None:
         """Constructor"""
         self._redis = redis.Redis()
-        self._redis.incr()
         self._redis.flushdb()
 
     @call_count
