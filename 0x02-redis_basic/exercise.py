@@ -18,11 +18,11 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key, fn):
+    def get(self, key, fn=None):
         if fn is not None:
             return fn(self._redis.get(key))
         return self._redis.get(key)
-    
+
     def get_str(self, key):
         pass
 
