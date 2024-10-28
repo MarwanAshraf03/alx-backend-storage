@@ -19,7 +19,6 @@ class Cache:
         return key
 
     def get(self, key, fn):
-        print(fn)
         if fn is not None:
             return fn(self._redis.get(key))
         return self._redis.get(key)
