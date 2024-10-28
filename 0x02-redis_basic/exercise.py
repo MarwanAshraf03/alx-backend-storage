@@ -5,13 +5,14 @@ import uuid
 import typing
 from functools import wraps
 
+# store = call_count(store(self, data))
 
 class Cache:
-    def call_count(fn, data):
+    def call_count(fn):
         @wraps(fn)
         def wrapper(self):
             self._redis.incr(fn.__qualname__)
-            return fn(data)
+            return fn()
         return wrapper
 
     """Class cache using redis database"""
