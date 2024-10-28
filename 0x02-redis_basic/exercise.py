@@ -19,6 +19,7 @@ class Cache:
         return key
 
     def get(self, key, Callable):
+        print(callable)
         if Callable is not None:
             return Callable(self._redis.get(key))
         return self._redis.get(key)
