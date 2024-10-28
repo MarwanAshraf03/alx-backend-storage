@@ -6,7 +6,7 @@ import typing
 from functools import wraps
 
 
-def count_call(method):
+def count_calls(method):
     @wraps(method)
     def wrapper(self, data):
         self._redis.incr(method.__qualname__)
@@ -22,7 +22,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_call
+    @count_calls
     def store(self, data: typing.Union[str, bytes, int, float]) -> str:
         """stores data using random uuid as a key then returns the key"""
         key: str = str(uuid.uuid4())
