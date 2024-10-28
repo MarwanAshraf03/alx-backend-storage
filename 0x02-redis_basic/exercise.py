@@ -30,7 +30,6 @@ class Cache:
         """Constructor"""
         self._redis = redis.Redis()
         self._redis.flushdb()
-        self._redis.rpush()
 
     @call_history
     @count_calls
