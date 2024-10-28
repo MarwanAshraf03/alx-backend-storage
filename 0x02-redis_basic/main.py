@@ -18,9 +18,9 @@ print(local_redis.get(key))
 cache = Cache()
 
 TEST_CASES = {
-    b"foo": None,
     123: int,
-    "bar": lambda d: d.decode("utf-8")
+    "bar": lambda d: d.decode("utf-8"),
+    b"foo": None
 }
 
 for value, fn in TEST_CASES.items():
