@@ -13,6 +13,7 @@ def count_calls(method: typing.Callable) -> typing.Callable:
         return method(self, data)
     return wrapper
 
+
 def call_history(method: typing.Callable) -> typing.Callable:
     @wraps(method)
     def wrapper(self, *args):
