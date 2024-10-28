@@ -3,15 +3,24 @@
 import redis
 import uuid
 import typing
+from functools import wraps
+
+def call_count(fn):
+    @wraps(fn)
+    def wrapper(self):
+        self._redis.incr(self._redis.store.__qualname__)
+        return fn
+    return wrapper
 
 class Cache:
     """Class cache using redis database"""
     def __init__(self) -> None:
         """Constructor"""
-        print(self.store.__qualname__)
         self._redis = redis.Redis()
+        self._redis.incr()
         self._redis.flushdb()
 
+    @call_count
     def store(self, data: typing.Union[str, bytes, int, float]) -> str:
         """stores data using random uuid as a key then returns the key"""
         key: str = str(uuid.uuid4())
