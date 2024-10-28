@@ -18,10 +18,10 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key, Callable):
-        print(callable)
-        if Callable is not None:
-            return Callable(self._redis.get(key))
+    def get(self, key, fn):
+        print(fn)
+        if fn is not None:
+            return fn(self._redis.get(key))
         return self._redis.get(key)
     
     def get_str(self, key):
