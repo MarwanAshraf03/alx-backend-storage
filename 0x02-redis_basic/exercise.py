@@ -7,11 +7,11 @@ from functools import wraps
 
 
 class Cache:
-    def call_count(fn):
+    def call_count(fn, data):
         @wraps(fn)
         def wrapper(self):
             self._redis.incr(fn.__qualname__)
-            return fn
+            return fn(data)
         return wrapper
 
     """Class cache using redis database"""
