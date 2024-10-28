@@ -9,7 +9,7 @@ class Cache:
     """Class cache using redis database"""
     def __init__(self) -> None:
         """Constructor"""
-        self._redis: redis.Redis = redis.Redis()
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: typing.Union[str, bytes, int, float]) -> str:
