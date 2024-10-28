@@ -17,3 +17,14 @@ class Cache:
         key: str = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+
+    def get(self, key, Callable):
+        if Callable is not None:
+            return Callable(self._redis.get(key))
+        return self._redis.get(key)
+    
+    def get_str(self, key):
+        pass
+
+    def get_int(self, key):
+        pass
