@@ -10,7 +10,7 @@ class Cache:
     def call_count(fn):
         @wraps(fn)
         def wrapper(self, data):
-            self._redis.incr(self._redis.store.__qualname__)
+            self._redis.incr(self._redis.fn.__qualname__)
             return fn(data)
         return wrapper
 
