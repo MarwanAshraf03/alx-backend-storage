@@ -4,11 +4,11 @@ import redis
 import uuid
 import typing
 
-
 class Cache:
     """Class cache using redis database"""
     def __init__(self) -> None:
         """Constructor"""
+        print(self.store.__qualname__)
         self._redis = redis.Redis()
         self._redis.flushdb()
 
